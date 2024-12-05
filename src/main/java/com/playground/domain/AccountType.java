@@ -1,4 +1,4 @@
-package com.playground.SB_GraphQL_Federated_Clients.domain;
+package com.playground.domain;
 
 public enum AccountType {
     CD,
