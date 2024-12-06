@@ -1,0 +1,48 @@
+scalar DateTime
+scalar PositiveFloat
+scalar Currency
+
+type Query {
+    accounts: [Account]
+}
+
+type Mutation {
+    addAccount(account: AccountInput!): Account
+    deleteAccount(accountId: Int): Boolean
+}
+
+type Account @key(fields: "accountId") {
+    accountId: ID
+    accountType: AccountType!
+    accountNumber: String!
+    currency: Currency!
+    balance: Float
+    status: AccountStatus!
+    lastActivityDate: DateTime
+}
+
+input AccountInput {
+    accountId: ID
+    accountType: AccountType!
+    accountNumber: String!
+    currency: Currency!
+    balance: Float
+    status: AccountStatus!
+    lastActivityDate: DateTime
+}
+
+enum AccountStatus {
+    OPEN
+    CLOSED
+    PENDINGOPEN
+    PENDINGCLOSED
+    DELINQUENT
+}
+
+enum AccountType {
+    CD
+    CHECKING
+    CREDITCARD
+    LOAN
+    MORTGAGE
+}
